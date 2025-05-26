@@ -1,7 +1,9 @@
+@use "../abstracts/variables" as *;
+
 @font-face {
   font-family: "Noto IKEA Latin Regular";
-  src: url('../../assets/fonts/noto-ikea-latin-regular.woff2') format('woff2'),
-       url('../../assets/fonts/noto-ikea-latin-regular.woff') format('woff');
+  src: url("../../assets/fonts/noto-ikea-latin-regular.woff2") format("woff2"),
+    url("../../assets/fonts/noto-ikea-latin-regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -9,4 +11,16 @@
 
 body {
   font-family: "Noto IKEA Latin Regular", sans-serif;
+}
+
+.heading-secondary {
+  padding: 1.5rem;
+  margin-top: 4rem;
+
+  color: $color-black;
+  margin-bottom: $spacing-xl;
+  text-align: center;
+  &__title {  
+    font-size: $font-size-lg !important;
+  }
 }

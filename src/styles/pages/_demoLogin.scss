@@ -2,28 +2,41 @@
 @use "../abstracts/mixins" as *;
 
 .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
   background-color: $color-white;
-  height: 100vh;
+  height: 75vh;
+
+  @include respond(tab-port) {
+    height: 90vh;
+    display: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+  }
 
   &__screen {
     display: grid;
     grid-template-rows: 1fr auto;
-    height: 100%;
+    min-width: 400px;
+    max-width: 500px;
     padding: $spacing-xl;
-    box-sizing: border-box;
+
+    @include respond(tab-port) {
+      height: 100%;
+      width: 100%;
+      min-width: inherit;
+      max-width: inherit;
+      padding: $spacing-xl;
+      box-sizing: border-box;
+    }
   }
 
   &__content {
     display: flex;
     flex-direction: column;
-  }
-
-  &__title {
-    font-size: $font-size-lg * 1.5;
-    color: $color-black;
-    margin-bottom: $spacing-xl;
   }
 
   &__subtitle {
@@ -41,7 +54,7 @@
     width: 100%;
     padding: $spacing-md $spacing-lg;
     border: 1px solid $color-grey-4;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     font-size: $font-size-lg;
     background-color: $color-white;
 
@@ -97,9 +110,23 @@
     }
   }
 
- 
+  &__error {
+    color: $color-error;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__success {
+    color: $color-success;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   &__footer {
     padding-top: $spacing-xl;
-    border-top: 1px solid $color-grey-4;
   }
 }
