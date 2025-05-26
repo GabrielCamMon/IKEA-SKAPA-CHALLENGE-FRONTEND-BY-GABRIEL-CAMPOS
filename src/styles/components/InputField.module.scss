@@ -1,0 +1,83 @@
+@use '../abstracts/variables' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  width: 100%;
+}
+
+.label {
+  font-size: $font-size-md;
+  line-height: $line-height;
+  color: $color-black;
+  font-weight: 500;
+}
+
+.required {
+  color: $color-error;
+  margin-left: 4px;
+}
+
+.input {
+  width: 100%;
+  padding: $spacing-md $spacing-lg;
+  border: 1px solid $color-grey-4;
+  border-radius: $border-radius;
+  font-size: $font-size-md;
+  line-height: $line-height;
+  color: $color-black;
+  background-color: $color-white;
+  transition: all 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px rgba($color-primary, 0.1);
+  }
+
+  &::placeholder {
+    color: $color-grey-2;
+  }
+
+  &:disabled {
+    background-color: $color-grey-5;
+    cursor: not-allowed;
+  }
+}
+
+// Estados
+.error {
+  .input {
+    border-color: $color-error;
+
+    &:focus {
+      box-shadow: 0 0 0 2px rgba($color-error, 0.1);
+    }
+  }
+}
+
+.success {
+  .input {
+    border-color: $color-success;
+
+    &:focus {
+      box-shadow: 0 0 0 2px rgba($color-success, 0.1);
+    }
+  }
+}
+
+// Texto de ajuda
+.helperText {
+  font-size: $font-size-sm;
+  line-height: $line-height;
+  color: $color-grey-2;
+
+  &.error {
+    color: $color-error;
+  }
+
+  &.success {
+    color: $color-success;
+  }
+}
