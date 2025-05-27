@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-
+import { useEffect, useState } from "react";
 import InputField from "../../components/common/InputField";
 
 const DemoLoginPage: React.FC = () => {
@@ -7,6 +6,7 @@ const DemoLoginPage: React.FC = () => {
   const [pin, setPin] = useState("");
   const [hasError, setHasError] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isRtl, setIsRtl] = useState(false);
 
   useEffect(() => {
     const isValid = /^[0-9]*$/.test(pin);
@@ -15,7 +15,7 @@ const DemoLoginPage: React.FC = () => {
   }, [pin]);
 
   return (
-    <div>
+    <div dir={isRtl ? "rtl" : "ltr"}>
       <header className="login__header">
         <div className="heading-secondary">
           <h2 className="heading-secondary__title">InputField Demo</h2>
@@ -28,8 +28,9 @@ const DemoLoginPage: React.FC = () => {
               <InputField
                 label="Username"
                 value={username}
-                setValue={setUsername}
+                onChange={setUsername}
                 type="text"
+                dir={isRtl ? "rtl" : "ltr"}
               />
             </div>
 
@@ -37,7 +38,7 @@ const DemoLoginPage: React.FC = () => {
               <InputField
                 label="Pin"
                 value={pin}
-                setValue={setPin}
+                onChange={setPin}
                 type="password"
                 showToggle
                 maxLength={8}
@@ -47,6 +48,7 @@ const DemoLoginPage: React.FC = () => {
                 errorMessage="Please enter only numbers"
                 successMessage="Valid PIN"
                 infoMessage="Only numeric input allowed"
+                dir={isRtl ? "rtl" : "ltr"}
               />
             </div>
           </div>
