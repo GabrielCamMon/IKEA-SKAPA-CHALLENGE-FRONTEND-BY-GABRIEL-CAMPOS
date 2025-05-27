@@ -1,8 +1,9 @@
-@use '../abstracts/variables' as *;
+@use "../abstracts/variables" as *;
 
-.btn{
-    & {
+.btn {
+  & {
     width: 100%;
+    height: 56px;
     padding: $spacing-lg;
     background-color: $color-white;
     color: $color-black;
@@ -12,15 +13,15 @@
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
-    }
+  }
 
-    &:hover {
-        background-color: $color-primary-dark;
-        color: $color-white;
-    }
-        
-    &:active {
-        background-color: $color-primary-dark;
-        color: $color-white;
-    }
+  &:hover {
+    background-color: $color-primary-dark;
+    color: $color-white;
+  }
+
+  &:active {
+    background-color: $color-primary-dark;
+    color: $color-white;
+  }
 }

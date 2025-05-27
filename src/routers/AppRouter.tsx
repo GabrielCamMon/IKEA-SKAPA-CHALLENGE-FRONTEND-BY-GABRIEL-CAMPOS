@@ -6,7 +6,7 @@ function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/demo" element={<Demo />} />
+      <Route path="/demo/:type" element={<Demo />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
