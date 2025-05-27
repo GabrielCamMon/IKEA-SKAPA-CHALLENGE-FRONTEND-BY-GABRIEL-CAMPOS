@@ -3,7 +3,7 @@ import EyeIcon from "../icon/EyeIcon";
 import ErrorIcon from "../icon/ErrorIcon";
 import SuccessIcon from "../icon/SuccessIcon";
 
-interface InputFieldProps {
+export interface InputFieldProps {
   /** The label text for the input field */
   label: string;
   /** The current value of the input */

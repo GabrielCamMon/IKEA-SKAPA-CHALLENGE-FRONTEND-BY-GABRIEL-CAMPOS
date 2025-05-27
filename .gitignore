@@ -38,3 +38,4 @@ coverage/
 # docker temp
 tmp/
 *.pid
+*storybook.log
