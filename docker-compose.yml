@@ -1,10 +1,28 @@
 services:
-  vite:
+  test:
     build: .
-    ports:
-      - "5173:5173"
+    command: yarn test
     volumes:
       - .:/app
       - /app/node_modules
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=test
+  storybook:
+      build: .
+      command: yarn storybook --ci
+      ports:
+        - "6006:6006"
+      volumes:
+        - .:/app
+        - /app/node_modules
+      environment:
+        - NODE_ENV=development
+  vite:
+      build: .
+      ports:
+        - "5173:5173"
+      volumes:
+        - .:/app
+        - /app/node_modules
+      environment:
+        - NODE_ENV=development

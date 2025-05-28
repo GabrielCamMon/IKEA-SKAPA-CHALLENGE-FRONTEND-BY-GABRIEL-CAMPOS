@@ -5,7 +5,11 @@ const HomePage: React.FC = () => {
   return (
     <div className="home">
       <div className="home__container">
-        <img src="/logo-ikea.png" alt="IKEA Logo" className="home__logo" />
+        <img
+          src="/assets/logo-ikea.png"
+          alt="IKEA Logo"
+          className="home__logo"
+        />
         <h1 className="home__title">Skapa UI Demo</h1>
 
         <Link to="/demo/ltr" className="home__link">
