@@ -1,15 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ikeaLogo from "../../assets/logo-ikea.png";
 
 const HomePage: React.FC = () => {
   return (
     <div className="home">
       <div className="home__container">
-        <img
-          src="/assets/logo-ikea.png"
-          alt="IKEA Logo"
-          className="home__logo"
-        />
+        <img src={ikeaLogo} alt="IKEA Logo" className="home__logo" />
         <h1 className="home__title">Skapa UI Demo</h1>
 
         <Link to="/demo/ltr" className="home__link">
