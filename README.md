@@ -1,54 +1,164 @@
-# React + TypeScript + Vite
+# Skapa Input Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is part of the **IKEA Skapa technical challenge** and consists of an accessible, reusable input field component built with **React**, **TypeScript**, and **Vite**. It includes **Storybook** for UI documentation, **Jest** for unit testing, and **Docker** for containerized development and testing.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Technologies Used
 
-## Expanding the ESLint configuration
+- [React 19](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Storybook 8](https://storybook.js.org/)
+- [Jest](https://jestjs.io/)
+- [Testing Library](https://testing-library.com/)
+- [Docker](https://www.docker.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+## 📦 Available Scripts
+
+```bash
+yarn dev             # Start Vite development server
+yarn build           # Build for production
+yarn preview         # Preview production build locally
+yarn lint            # Run ESLint
+yarn typecheck       # Run TypeScript type checking
+yarn test            # Run unit tests with Jest
+yarn test:watch      # Watch mode for tests
+yarn test:coverage   # Generate test coverage report
+yarn storybook       # Start Storybook at http://localhost:6006
+yarn build-storybook # Generate static Storybook build
+```
+## 🐳 Docker
+This project supports Docker for containerized development and testing.
+
+`docker-compose.yml`
+
+```bash
+version: "3.8"
+
+services:
+  vite:
+    build: .
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+
+  storybook:
+    build: .
+    command: yarn storybook --ci
+    ports:
+      - "6006:6006"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+
+  test:
+    build: .
+    command: yarn test
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=test
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🐳 Running the Project with Docker
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+### Prerequisites
+- Docker
+- Docker Compose
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    "react-x": reactX,
-    "react-dom": reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs["recommended-typescript"].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
+### Start Vite dev server
+The application for the project was developed with Vite, React, and TypeScript.
+
+```bash
+docker compose up vite
 ```
+Open http://localhost:5173 in your browser.
+
+### 📚 Start Storybook
+The input component was documented in Storybook.
+
+```bash
+docker compose up storybook
+```
+Open http://localhost:6006 in your browser.
+
+### ✅ Run Tests
+Tests are written with Jest and Testing Library.
+
+```bash
+docker compose up test
+```
+
+### Start all containers
+```bash
+docker compose up --build
+```
+### Stop all containers
+
+```bash
+docker compose down
+```
+
+## 📸 Visual Demonstrations
+Click on <b>Go to LTR input demo screen</b> to test the demo input with LTR support, or click on <b>Go to RTL input demo screen</b> to test the demo input with RTL support.
+
+<table border="1">
+  <tr>
+    <th>Desktop Screen</th>
+    <th>Cellphone Screen</th>
+  </tr>
+  <tr>
+    <td><img src="public/assets/HomePage-screen-desktop.png" alt="Screenshot" width="500"   /></td>
+    <td><img src="public/assets/HomePage-screen-cellphone.png" alt="Screenshot" width="250"   /></td>
+  </tr>
+  <tr>
+    <td><img src="public/assets/demo-ltr-screen-desktop.png" alt="Screenshot" width="500"   /></td>
+    <td><img src="public/assets/demo-ltr-screen-cellphone.png" alt="Screenshot" width="250"   /></td>
+  </tr>
+  <tr>
+    <td><img src="public/assets/demo-rtl-screen-desktop.png" alt="Screenshot" width="500"   /></td>
+    <td><img src="public/assets/demo-rtl-screen-cellphone.png" alt="Screenshot" width="250"   /></td>
+  </tr>
+</table>
+
+
+## 📁 Project Structure
+<pre>
+src
+│   ├── components (application components)
+│   │   └── common (reusable components)
+│   ├── main.tsx
+│   ├── pages (application pages)
+│   │   ├── DemoLoginPage
+│   │   └── Home
+│   ├── routers (route configuration)
+│   │   └── AppRouter.tsx
+│   ├── stories (storybook stories)
+│   │   ├── assets
+│   │   ├── components
+│   │   └── Configure.mdx
+│   ├── styles (sass styles)
+│   │   ├── abstracts (where media queries, utilities and sass variables are located)
+│   │   ├── base (base settings and typography)
+│   │   ├── components (component styles)
+│   │   ├── main.scss
+│   │   └── pages (page styles)
+│   ├── tests (unit tests)
+│   │   ├── components
+│   │   └── pages
+</pre>
+
+## 📄 License
+
+This project was developed by Gabriel Campos as part of the IKEA Skapa challenge. It is intended for educational and technical demonstration purposes only.
