@@ -24,7 +24,7 @@ const DemoLoginPage: React.FC = () => {
   const title = isRtl ? "عرض حقل الإدخال" : "InputField Demo";
 
   return (
-    <div dir={isRtl ? "rtl" : "ltr"}>
+    <div data-testid="login-container" dir={isRtl ? "rtl" : "ltr"}>
       <header className="login__header">
         <div className="heading-secondary">
           <h2 className="heading-secondary__title">{title}</h2>
